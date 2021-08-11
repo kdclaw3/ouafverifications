@@ -1,7 +1,7 @@
 require('dotenv').config();
 const bent = require('bent');
 const fs = require('fs');
-let inputDir = './queries/'
+let inputDir = './queries/';
 let files = fs.readdirSync(inputDir);
 
 let outputDir = './results/';
@@ -27,7 +27,7 @@ async function test (outputFile, table, sql) {
 
   let rs = await dee.json();
   if (rs.items[0].resultSet.items.length > 0) {
-    //console.log(table, rs.items[0].resultSet.items);
+    // console.log(table, rs.items[0].resultSet.items);
 
     let txt = rs.items[0].resultSet.items.length.toString() + '      ' + sql + '\n';
     console.log(txt);

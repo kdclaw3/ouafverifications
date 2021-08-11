@@ -39,8 +39,6 @@ and dee.table_name is not null;
 */
 
 module.exports = {
-
-
   1: `select CU_ID, count(*) cnt from W1_ACT_CONSTR_LOC_CU atc where CU_ID is not null and not exists (select 1 from W1_CU tn where atc.CU_ID = CU_ID) group by atc.CU_ID;`,
   2: `select CU_ID, count(*) cnt from W1_ACT_CONSTR_LOC_CU_ASSET atc where CU_ID is not null and not exists (select 1 from W1_CU tn where atc.CU_ID = CU_ID) group by atc.CU_ID;`,
   3: `select CU_ID, count(*) cnt from W1_ACT_RESRC_REQMT_DTL atc where CU_ID is not null and not exists (select 1 from W1_CU tn where atc.CU_ID = CU_ID) group by atc.CU_ID;`,
