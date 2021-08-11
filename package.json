@@ -1,0 +1,20 @@
+{
+	"name": "ouafverification",
+	"description": "seminole data conversion",
+	"repository": {},
+	"version": "0.0.1",
+	"main": "app.js",
+	"scripts": {
+		"lint": "eslint . --ext=js --fix"
+	},
+	"author": "Dee Clawson",
+	"license": "MIT",
+	"dependencies": {
+		"bent": "^7.3.12",
+		"dotenv": "^8.6.0"
+	},
+	"optionalDependencies": {
+		"babel-eslint": "^10.1.0",
+		"eslint": "^6.8.0"
+	}
+}
