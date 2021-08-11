@@ -27,17 +27,13 @@ async function test (outputFile, table, sql) {
 
   let rs = await dee.json();
   if (rs.items[0].resultSet.items.length > 0) {
-    // console.log(table, rs.items[0].resultSet.items);
 
     let txt = rs.items[0].resultSet.items.length.toString() + '      ' + sql + '\n';
-    console.log(txt);
-
     if (!fs.existsSync(outputFile)) {
       fs.writeFileSync(outputFile, txt);
     } else {
       fs.appendFileSync(outputFile, txt);
     }
-
   }
 
 }
