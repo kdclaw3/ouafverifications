@@ -13,7 +13,7 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }
 
-async function test (outputFile, table, sql) {
+async function test (outputFile, table, sql, print) {
 
   const post = bent('POST', 200);
   let dee = await post(
@@ -26,14 +26,23 @@ async function test (outputFile, table, sql) {
   );
 
   let rs = await dee.json();
-  if (rs.items[0].resultSet.items.length > 0) {
+  try {
+    if (rs.items[0].resultSet.items.length > 0) {
 
-    let txt = rs.items[0].resultSet.items.length.toString() + '      ' + sql + '\n';
-    if (!fs.existsSync(outputFile)) {
-      fs.writeFileSync(outputFile, txt);
-    } else {
-      fs.appendFileSync(outputFile, txt);
+      let txt = rs.items[0].resultSet.items.length.toString() + '      ' + sql + '\n';
+
+      if (print) console.log(rs.items[0].resultSet.items);
+
+      if (!fs.existsSync(outputFile)) {
+        fs.writeFileSync(outputFile, txt);
+      } else {
+        fs.appendFileSync(outputFile, txt);
+      }
     }
+  } catch (e) {
+    console.log('ERROR:');
+    console.log(outputFile, table, sql, print);
+    console.log('ERROR:', e);
   }
 
 }
@@ -43,14 +52,17 @@ for (let i = 0, l = files.length; i < l; i++) {
 
   let ofn = outputDir + file.replace(/.js/g, '') + '.txt';
 
-  let query = require(inputDir + file);
-  let keys = Object.keys(query);
+  let fileInput = require(inputDir + file);
+  // allow an input file with printing defined
+  let keys = Object.keys(fileInput.queries);// || Object.keys(fileInput);
+  // console.log(keys);
+  let print = Object.keys(fileInput).print !== undefined ? Object.keys(fileInput).print : false;
   keys.sort(); // alphabetize
   for (let i = 0, l = keys.length; i < l; i++) {
     let key = keys[i];
     setTimeout(() => {
       console.log(i, 'of', l);
-      test(ofn, key, query[key]);
+      test(ofn, key, fileInput.queries[key], print);
     }, (i + 1) * 250);
   }
 }
