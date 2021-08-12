@@ -22,7 +22,8 @@ module.exports = {
     W1_ASSET_K: `select 'ASSET_ID' tn, count(*) cnt from W1_ASSET a where not exists (select * from W1_ASSET_K b where a.ASSET_ID = b.ASSET_ID) group by ASSET_ID`,
     W1_BC_HEADER_K: `select 'BC_HEADER_ID' tn, count(*) cnt from W1_BC_HEADER a where not exists (select * from W1_BC_HEADER_K b where a.BC_HEADER_ID = b.BC_HEADER_ID) group by BC_HEADER_ID`,
     W1_BC_LINE_K: `select 'BC_LINE_ID' tn, count(*) cnt from W1_BC_LINE a where not exists (select * from W1_BC_LINE_K b where a.BC_LINE_ID = b.BC_LINE_ID) group by BC_LINE_ID`,
-    W1_BOM_K: `select 'BOM_PART_ID' tn, count(*) cnt from W1_BOM a where not exists (select * from W1_BOM_K b where a.BOM_PART_ID = b.BOM_PART_ID) group by BOM_PART_ID`,
+    // W1_BOM is not a table? W1_BOM_PART??
+    W1_BOM_K: `select 'BOM_PART_ID' tn, count(*) cnt from W1_BOM_PART a where not exists (select * from W1_BOM_K b where a.BOM_PART_ID = b.BOM_PART_ID) group by BOM_PART_ID`,
     W1_CHANGE_REQ_K: `select 'CHANGE_REQ_ID' tn, count(*) cnt from W1_CHANGE_REQ a where not exists (select * from W1_CHANGE_REQ_K b where a.CHANGE_REQ_ID = b.CHANGE_REQ_ID) group by CHANGE_REQ_ID`,
     W1_CHKLST_K: `select 'CHECKLIST_ID' tn, count(*) cnt from W1_CHKLST a where not exists (select * from W1_CHKLST_K b where a.CHECKLIST_ID = b.CHECKLIST_ID) group by CHECKLIST_ID`,
     W1_CMPL_EVT_K: `select 'CMPL_EVT_ID' tn, count(*) cnt from W1_CMPL_EVT a where not exists (select * from W1_CMPL_EVT_K b where a.CMPL_EVT_ID = b.CMPL_EVT_ID) group by CMPL_EVT_ID`,
