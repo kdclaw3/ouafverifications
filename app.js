@@ -31,7 +31,7 @@ async function test (outputFile, table, sql, print) {
 
       let txt = rs.items[0].resultSet.items.length.toString() + '      ' + sql + '\n';
 
-      if (print) console.log(rs.items[0].resultSet.items);
+      if (print && (rs.items[0].resultSet.items).length > 0) console.log(rs.items[0].resultSet.items);
 
       if (!fs.existsSync(outputFile)) {
         fs.writeFileSync(outputFile, txt);
@@ -56,7 +56,8 @@ for (let i = 0, l = files.length; i < l; i++) {
   // allow an input file with printing defined
   let keys = Object.keys(fileInput.queries);// || Object.keys(fileInput);
   // console.log(keys);
-  let print = Object.keys(fileInput).print !== undefined ? Object.keys(fileInput).print : false;
+  let print = fileInput.print !== undefined ? fileInput.print : false;
+
   keys.sort(); // alphabetize
   for (let i = 0, l = keys.length; i < l; i++) {
     let key = keys[i];
