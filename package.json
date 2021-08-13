@@ -1,6 +1,6 @@
 {
 	"name": "ouafverification",
-	"description": "seminole data conversion",
+	"description": "Project written to run a large amount of verification and key integrity queries against Oracle Database SQL Rest.",
 	"repository": {},
 	"version": "0.0.1",
 	"main": "app.js",
