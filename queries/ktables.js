@@ -91,6 +91,7 @@ module.exports = {
     W1_WORK_DESIGN_K: `select 'WORK_DESIGN_ID' tn, count(*) cnt from W1_WORK_DESIGN a where not exists (select * from W1_WORK_DESIGN_K b where a.WORK_DESIGN_ID = b.WORK_DESIGN_ID) group by WORK_DESIGN_ID`,
     W1_WORK_LOC_K: `select 'WORK_LOC_ID' tn, count(*) cnt from W1_WORK_LOC a where not exists (select * from W1_WORK_LOC_K b where a.WORK_LOC_ID = b.WORK_LOC_ID) group by WORK_LOC_ID`,
     W1_WORK_REQ_K: `select 'WORK_REQ_ID' tn, count(*) cnt from W1_WORK_REQ a where not exists (select * from W1_WORK_REQ_K b where a.WORK_REQ_ID = b.WORK_REQ_ID) group by WORK_REQ_ID`,
-    W1_WO_K: `select 'WO_ID' tn, count(*) cnt from W1_WO a where not exists (select * from W1_WO_K b where a.WO_ID = b.WO_ID) group by WO_ID`
+    W1_WO_K: `select 'WO_ID' tn, count(*) cnt from W1_WO a where not exists (select * from W1_WO_K b where a.WO_ID = b.WO_ID) group by WO_ID`,
+    F1_ATTACHMENT: `select 'ATTACHMENT_ID' tn, count(*) cnt from F1_ATTACHMENT a where not exists (select * from F1_ATTACHMENT_K b where a.ATTACHMENT_ID = b.ATTACHMENT_ID) group by ATTACHMENT_ID`
   }
 };
