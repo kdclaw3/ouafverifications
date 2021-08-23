@@ -8,6 +8,6 @@ Queries for this project were written specifically to verificy an Oracle WAM 1.9
 To use this project create an environment (.env) file with the two parameters below:
 ```
 #.env
-OUAF_SQLREST_URL=The url to your SQL Rest Connection
-OUAF_SQLREST_AUTHORIZATION=Basic Authentication String
+OUAF_SQLREST_URL=https://test.utilities.oracle.com/br549/test/app/rest/
+OUAF_SQLREST_USERNAMEPASSWORD=harambe@oracle.com:hardpassword
 ```
