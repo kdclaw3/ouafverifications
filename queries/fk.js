@@ -1581,7 +1581,8 @@ module.exports = {
     1538: `select RTN_LINE_ID, count(*) cnt from W1_RTN_LINE_LOG atc where RTN_LINE_ID is not null and not exists (select 1 from W1_RTN_LINE tn where atc.RTN_LINE_ID = RTN_LINE_ID) group by atc.RTN_LINE_ID;`,
     1539: `select RTN_LINE_ID, count(*) cnt from W1_RTN_LINE_LOG_PARM atc where RTN_LINE_ID is not null and not exists (select 1 from W1_RTN_LINE tn where atc.RTN_LINE_ID = RTN_LINE_ID) group by atc.RTN_LINE_ID;`,
     1540: `select RTN_LINE_ID, count(*) cnt from W1_RTN_LINE_LOT atc where RTN_LINE_ID is not null and not exists (select 1 from W1_RTN_LINE tn where atc.RTN_LINE_ID = RTN_LINE_ID) group by atc.RTN_LINE_ID;`,
-    1541: `select RTN_LINE_ID, count(*) cnt from W1_SHIPPING_LINE atc where RTN_LINE_ID is not null and not exists (select 1 from W1_RTN_LINE tn where atc.RTN_LINE_ID = RTN_LINE_ID) group by atc.RTN_LINE_ID;`
+    1541: `select RTN_LINE_ID, count(*) cnt from W1_SHIPPING_LINE atc where RTN_LINE_ID is not null and not exists (select 1 from W1_RTN_LINE tn where atc.RTN_LINE_ID = RTN_LINE_ID) group by atc.RTN_LINE_ID;`,
+    1542: `select PAY_TO_LOC, count(*) cnt from W1_VENDOR_LOC atc where PAY_TO_LOC is not null and not exists (select 1 from W1_VENDOR_LOC tn where atc.PAY_TO_LOC = VENDOR_LOC_ID) group by atc.PAY_TO_LOC;`
   }
 
 };
