@@ -17,7 +17,7 @@ if (!fs.existsSync(outputDir)) {
 
 // prep url calls
 const { url = process.env.OUAF_SQLREST_URL, unpw = process.env.OUAF_SQLREST_USERNAMEPASSWORD } = process.env;
-if (!url || !unpw) console.error('Error: Missing Params, URL:', url, 'UNPW:', authorization), process.exit(1);
+if (!url || !unpw) console.error('Error: Missing Params, URL:', url, 'UNPW:', unpw), process.exit(1);
 const authorization = 'Basic ' + Buffer.from(unpw).toString('base64');
 
 
