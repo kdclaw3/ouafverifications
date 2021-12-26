@@ -29,7 +29,7 @@ async function test (outputFile, table, sql, print) {
   try {
     if (rs.items[0].resultSet.items.length > 0) {
 
-      let txt = rs.items[0].resultSet.items.length.toString().padEnd(10, String.fromCharCode(32)) + sql + '\n';
+      let txt = rs.items[0].resultSet.items.length.toString().padEnd(10) + sql + '\n';
 
       if (print && (rs.items[0].resultSet.items).length > 0) console.log(rs.items[0].resultSet.items);
 
