@@ -8,16 +8,18 @@ let files = fs.readdirSync(inputDir);
 let outputDir = './results/';
 try {
   fs.rmdirSync(outputDir, { recursive: true });
-} catch (err) {}
+} catch (err) {
+  null;
+}
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }
 
 // prep url calls
-const { OUAF_SQLREST_URL, OUAF_SQLREST_USERNAMEPASSWORD } = process.env;
-const url = OUAF_SQLREST_URL;
-const authorization = OUAF_SQLREST_USERNAMEPASSWORD ? 'Basic ' + Buffer.from(OUAF_SQLREST_USERNAMEPASSWORD).toString('base64') : null;
-if (!url || !authorization) console.error('Error: Missing Params, URL:', url, 'Auth:', authorization), process.exit(1);
+const { url = process.env.OUAF_SQLREST_URL, unpw = process.env.OUAF_SQLREST_USERNAMEPASSWORD } = process.env;
+if (!url || !unpw) console.error('Error: Missing Params, URL:', url, 'UNPW:', authorization), process.exit(1);
+const authorization = 'Basic ' + Buffer.from(unpw).toString('base64');
+
 
 async function test (outputFile, table, sql, print) {
 
