@@ -18,26 +18,18 @@ if (!fs.existsSync(outputDir)) {
 // prep url calls
 const { url = process.env.OUAF_SQLREST_URL, unpw = process.env.OUAF_SQLREST_USERNAMEPASSWORD } = process.env;
 if (!url || !unpw) console.error('Error: Missing Params, URL:', url, 'UNPW:', unpw), process.exit(1);
-const authorization = 'Basic ' + Buffer.from(unpw).toString('base64');
-
+const headers = { 'authorization': 'Basic ' + Buffer.from(unpw).toString('base64'), 'content-type': 'application/sql' };
 
 async function test (outputFile, table, sql, print) {
 
   const post = bent('POST', 200);
-  let dee = await post(
-    url,
-    Buffer.from(sql),
-    {
-      authorization,
-      'content-type': 'application/sql'
-    }
-  );
+  let dee = await post(url, Buffer.from(sql), headers);
 
   let rs = await dee.json();
   try {
     if (rs.items[0].resultSet.items.length > 0) {
 
-      let txt = rs.items[0].resultSet.items.length.toString() + '      ' + sql + '\n';
+      let txt = rs.items[0].resultSet.items.length.toString().padEnd(10, String.fromCharCode(32)) + sql + '\n';
 
       if (print && (rs.items[0].resultSet.items).length > 0) console.log(rs.items[0].resultSet.items);
 
@@ -56,21 +48,21 @@ async function test (outputFile, table, sql, print) {
 }
 
 for (let i = 0, l = files.length; i < l; i++) {
-  let file = files[i];
+  const file = files[i];
 
-  let ofn = outputDir + file.replace(/.js/g, '') + '.txt';
+  const ofn = outputDir + file.replace(/.js/g, '') + '.txt';
 
-  let fileInput = require(inputDir + file);
+  const fileInput = require(inputDir + file);
   // allow an input file with printing defined
-  let keys = Object.keys(fileInput.queries);
-  let print = fileInput.print !== undefined ? fileInput.print : false;
+  const { print = false, queries } = fileInput;
+  const keys = Object.keys(queries);
 
   keys.sort(); // alphabetize
   for (let i = 0, l = keys.length; i < l; i++) {
     let key = keys[i];
     setTimeout(() => {
       console.log(i, 'of', l);
-      test(ofn, key, fileInput.queries[key], print);
+      test(ofn, key, queries[key], print);
     }, (i + 1) * 250); // because
   }
 }
