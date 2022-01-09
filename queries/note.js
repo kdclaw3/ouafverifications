@@ -8,7 +8,7 @@ and owner = 'CISADM'
 */
 
 module.exports = {
-  print: true,
+  print: false,
   queries: {
     W1_ACTIVITY_NOTE: `select note_type_flg, count(*) from W1_ACTIVITY_NOTE where not exists (select * from CI_LOOKUP_VAL where field_name = 'NOTE_TYPE_FLG' and field_value = note_type_flg) group by note_type_flg`,
     W1_ACT_RECON_NOTE: `select note_type_flg, count(*) from W1_ACT_RECON_NOTE where not exists (select * from CI_LOOKUP_VAL where field_name = 'NOTE_TYPE_FLG' and field_value = note_type_flg) group by note_type_flg`,

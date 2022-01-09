@@ -10,7 +10,7 @@ and table_name like 'W1%';
 */
 
 module.exports = {
-  print: true,
+  print: false,
   queries: {
     W1_ACPT_LINE: `select * from CISADM.W1_ACPT_LINE a where bo_status_cd is null;`,
     W1_ACPT_LINE_LOG: `select * from CISADM.W1_ACPT_LINE_LOG a where bo_status_cd is null;`,

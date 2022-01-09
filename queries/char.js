@@ -15,7 +15,7 @@ and table_name like 'W1%_CHAR';
 */
 
 module.exports = {
-  print: true,
+  print: false,
   queries: {
     W1_ACPT_LINE_CHAR: `select char_type_cd, char_val, count(*) cnt from W1_ACPT_LINE_CHAR a where exists (select 1 from ci_char_type b where char_type_flg = 'DFV' and a.char_type_cd = b.char_type_cd ) and not exists (select * from CI_CHAR_VAL c where a.char_type_cd = c.char_type_cd and a.char_val = c.char_val) group by char_type_cd, char_val order by 1,2;`,
     W1_ACTIVITY_CHAR: `select char_type_cd, char_val, count(*) cnt from W1_ACTIVITY_CHAR a where exists (select 1 from ci_char_type b where char_type_flg = 'DFV' and a.char_type_cd = b.char_type_cd ) and not exists (select * from CI_CHAR_VAL c where a.char_type_cd = c.char_type_cd and a.char_val = c.char_val) group by char_type_cd, char_val order by 1,2;`,

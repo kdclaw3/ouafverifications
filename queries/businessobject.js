@@ -10,7 +10,7 @@ order by table_name;
 */
 
 module.exports = {
-  print: true,
+  print: false,
   queries: {
     C1_CALC_GRP: `select * from CISADM.C1_CALC_GRP a where bus_obj_cd is null;`,
     C1_CALC_RULE: `select * from CISADM.C1_CALC_RULE a where bus_obj_cd is null;`,

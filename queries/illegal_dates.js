@@ -11,7 +11,7 @@ order by table_name, column_name;
 */
 
 module.exports = {
-  print: true,
+  print: false,
   queries: {
     184: `select * from CISADM.C0_INSTALLATION a where IB_BASE_TM is not null  and to_char(next_day(next_day(to_date(to_char(IB_BASE_TM,'YYYY') || '03','YYYYMM')-1,'SUNDAY'),'SUNDAY'),'YYYYMMDD') || '02' = to_char(IB_BASE_TM,'YYYYMMDDHH24')`,
     1811: `select * from CISADM.C1_BI_BILLED_USAGE_VW a where ACCOUNTING_DT is not null  and to_char(next_day(next_day(to_date(to_char(ACCOUNTING_DT,'YYYY') || '03','YYYYMM')-1,'SUNDAY'),'SUNDAY'),'YYYYMMDD') || '02' = to_char(ACCOUNTING_DT,'YYYYMMDDHH24')`,

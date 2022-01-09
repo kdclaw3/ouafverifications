@@ -15,7 +15,7 @@ and data_type = 'NUMBER';
 */
 
 module.exports = {
-  print: true,
+  print: false,
   queries: {
 
     CI_ACC_GRP_VERSION: `select 'CI_ACC_GRP_VERSION' tn, count(*) cnt from CI_ACC_GRP a where VERSION is null group by VERSION`,
