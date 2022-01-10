@@ -1,12 +1,13 @@
 /*
 select
 
-rownum || ': `select * from ' || owner || '.' || table_name || ' a where ' || column_name || ' is not null ' ||
+rownum || ': `select * from ' || owner || '.' || table_name || ' a where ' || column_name || ' is not null ' || 
 ' and to_char(next_day(next_day(to_date(to_char(' || column_name || ',''YYYY'') || ''03'',''YYYYMM'')-1,''SUNDAY''),''SUNDAY''),''YYYYMMDD'') || ''02'' = to_char(' || column_name || ',''YYYYMMDDHH24'')`,' q
 
 from all_tab_columns
 where owner = 'CISADM'
 and data_type = 'DATE'
+and table_name not like '%VW'
 order by table_name, column_name;
 */
 
