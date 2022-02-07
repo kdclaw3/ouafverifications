@@ -47,6 +47,7 @@ async function test (outputFile, table, sql, print) {
 
 }
 
+// let sum = 0;
 for (let i = 0, l = files.length; i < l; i++) {
   const file = files[i];
 
@@ -57,6 +58,8 @@ for (let i = 0, l = files.length; i < l; i++) {
   const { print = false, queries } = fileInput;
   const keys = Object.keys(queries);
 
+  // sum += keys.length;
+
   keys.sort(); // alphabetize
   for (let i = 0, l = keys.length; i < l; i++) {
     let key = keys[i];
@@ -66,3 +69,5 @@ for (let i = 0, l = files.length; i < l; i++) {
     }, (i + 1) * 250); // because
   }
 }
+
+// console.log(sum);
