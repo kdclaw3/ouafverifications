@@ -956,7 +956,6 @@ module.exports = {
     912: `select ASSET_ID, count(*) cnt from W1_ASSET_ATTRIBUTE atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
     913: `select ASSET_ID, count(*) cnt from W1_ASSET_CHAR atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
     914: `select ASSET_ID, count(*) cnt from W1_ASSET_CHAR2 atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
-    915: `select ASSET_ID, count(*) cnt from W1_ASSET_CHAR_31MAY21 atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
     916: `select ASSET_ID, count(*) cnt from W1_ASSET_DOCUMENT atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
     917: `select ASSET_ID, count(*) cnt from W1_ASSET_EMPLOYEE atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
     918: `select ASSET_ID, count(*) cnt from W1_ASSET_IDENTIFIER atc where ASSET_ID is not null and not exists (select 1 from W1_ASSET tn where atc.ASSET_ID = ASSET_ID) group by atc.ASSET_ID;`,
