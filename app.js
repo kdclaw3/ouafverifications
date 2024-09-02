@@ -1,5 +1,3 @@
-require('dotenv').config();
-const bent = require('bent');
 const fs = require('fs');
 let inputDir = './queries/';
 let files = fs.readdirSync(inputDir);
@@ -22,10 +20,18 @@ const headers = { 'authorization': 'Basic ' + Buffer.from(unpw).toString('base64
 
 async function test (outputFile, table, sql, print) {
 
-  const post = bent('POST', 200);
-  let dee = await post(url, Buffer.from(sql), headers);
+  const response = await fetch(url, {
+    method: 'POST',
+    headers,
+    body: sql
+  });
 
-  let rs = await dee.json();
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const rs = await response.json();
+  
   try {
     if (rs.items[0].resultSet.items.length > 0) {
 

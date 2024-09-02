@@ -2,16 +2,16 @@
 	"name": "ouafverification",
 	"description": "Project written to run a large amount of verification and key integrity queries against Oracle Database SQL Rest.",
 	"repository": {},
-	"version": "0.0.1",
+	"version": "0.0.2",
+	"node": ">=22.2.0",
 	"main": "app.js",
 	"scripts": {
+		"verify": "node --env-file=.env app.js",
 		"lint": "eslint . --ext=js --fix"
 	},
 	"author": "Dee Clawson",
 	"license": "MIT",
 	"dependencies": {
-		"bent": "^7.3.12",
-		"dotenv": "^8.6.0"
 	},
 	"optionalDependencies": {
 		"babel-eslint": "^10.1.0",
